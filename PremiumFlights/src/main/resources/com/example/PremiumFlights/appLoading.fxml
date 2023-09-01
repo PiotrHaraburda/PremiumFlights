@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.ProgressBar?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="200.0" prefWidth="250.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.PremiumFlights.AppLoading">
+   <children>
+      <ImageView fx:id="planeImageView" fitHeight="150.0" fitWidth="200.0" layoutX="50.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@pngegg.png" />
+         </image>
+      </ImageView>
+      <ProgressBar fx:id="progressBar" layoutX="25.0" layoutY="155.0" prefWidth="200.0" progress="0.0" />
+   </children>
+</AnchorPane>

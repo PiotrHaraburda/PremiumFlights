@@ -1,0 +1,681 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.geometry.Rectangle2D?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Hyperlink?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.ColorAdjust?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.shape.Circle?>
+<?import javafx.scene.text.Font?>
+
+<SplitPane dividerPositions="0.0" maxHeight="1080.0" maxWidth="1920.0" minHeight="600.0" minWidth="1000.0" prefHeight="600.0" prefWidth="1000.0" stylesheets="@mainAppStyles.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.PremiumFlights.MainApp">
+   <items>
+      <AnchorPane fx:id="contentAnchorPane" maxHeight="1080.0" maxWidth="1520.0" minHeight="600.0" minWidth="810.0" prefHeight="600.0" prefWidth="810.0">
+         <children>
+            <AnchorPane fx:id="filterAnchorPane" focusTraversable="true" maxHeight="200.0" maxWidth="1220.0" minHeight="44.0" minWidth="723.0" prefHeight="44.0" prefWidth="723.0" style="-fx-background-color: #EEEEEE; -fx-effect: dropshadow(three-pass-box, grey, 30, 0, 0, 0);" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="87.0" AnchorPane.topAnchor="0.0">
+               <children>
+                  <Label fx:id="departureLabel" alignment="CENTER" layoutX="4.0" layoutY="13.0" prefHeight="17.0" prefWidth="98.0" style="-fx-text-fill: #393E46;" text="Miejsce wylotu:" AnchorPane.leftAnchor="4.0">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font></Label>
+                  <Label fx:id="arrivalLabel" alignment="CENTER" layoutX="260.0" layoutY="13.0" prefHeight="17.0" prefWidth="98.0" style="-fx-text-fill: #393E46;" text="Miejsce przylotu:" AnchorPane.leftAnchor="260.0" AnchorPane.rightAnchor="365.0">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font></Label>
+                  <Label fx:id="dateLabel" alignment="CENTER" layoutX="524.0" layoutY="13.0" style="-fx-text-fill: #393E46;" text="Dzień:" AnchorPane.rightAnchor="166.0">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font></Label>
+                  <DatePicker fx:id="dayDatePicker" layoutX="565.0" layoutY="9.0" onAction="#onFilterClick" prefHeight="25.0" prefWidth="112.0" AnchorPane.rightAnchor="46.0">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor></DatePicker>
+                  <ComboBox fx:id="departureComboBox" layoutX="104.0" layoutY="9.0" onAction="#onFilterClick" prefHeight="25.0" prefWidth="148.0" AnchorPane.leftAnchor="104.0">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor></ComboBox>
+                  <ComboBox fx:id="arrivalComboBox" layoutX="364.0" layoutY="9.0" maxHeight="25.0" maxWidth="148.0" minHeight="25.0" minWidth="148.0" onAction="#onFilterClick" prefHeight="25.0" prefWidth="148.0">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor></ComboBox>
+                  <Button fx:id="dateResetButton" layoutX="677.0" layoutY="9.0" mnemonicParsing="false" onAction="#onDateResetClick" prefHeight="25.0" prefWidth="33.0" text="reset&#10;" textAlignment="CENTER" AnchorPane.rightAnchor="13.0">
+                     <font>
+                        <Font size="9.0" />
+                     </font>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </Button>
+               </children>
+            </AnchorPane>
+            <Separator layoutY="44.0" maxWidth="1420.0" prefHeight="1.0" prefWidth="811.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+               <effect>
+                  <ColorAdjust brightness="-0.75" />
+               </effect>
+            </Separator>
+            <Separator layoutY="48.0" maxWidth="1420.0" prefHeight="1.0" prefWidth="811.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+               <effect>
+                  <ColorAdjust brightness="-0.75" />
+               </effect>
+            </Separator>
+            <Label fx:id="clockLabel" layoutX="747.0" layoutY="10.0" style="-fx-effect: dropshadow(three-pass-box, grey, 30, 0, 0, 0); -fx-text-fill: #393E46;" text="12:00" AnchorPane.rightAnchor="21.0">
+               <font>
+                  <Font name="System Bold" size="16.0" />
+               </font>
+            </Label>
+            <Separator layoutX="720.0" orientation="VERTICAL" prefHeight="44.0" prefWidth="6.0" AnchorPane.rightAnchor="84.0">
+               <effect>
+                  <ColorAdjust brightness="-0.75" />
+               </effect>
+            </Separator>
+            <ScrollPane fx:id="scrollPane" hbarPolicy="NEVER" layoutY="50.0" maxHeight="800.0" maxWidth="1520.0" minHeight="550.0" minWidth="810.0" pannable="true" prefHeight="550.0" prefWidth="817.0" style="-fx-background-color: #393E46;" vbarPolicy="ALWAYS" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="-2.0" AnchorPane.topAnchor="50.0">
+              <content>
+                <AnchorPane fx:id="scrollAnchorPane" maxHeight="1.7976931348623157E308" maxWidth="1520.0" minWidth="0.0" prefWidth="795.0" style="-fx-background-color: #393E46;">
+                     <children>
+                        <AnchorPane fx:id="ticketAnchorPane1" layoutX="14.0" layoutY="14.0" prefHeight="87.0" prefWidth="763.0" style="-fx-background-color: #EEEEEE; -fx-background-radius: 20; -fx-border-radius: 20; -fx-border-width: 5; -fx-effect: dropshadow( gaussian , rgba(0,0,0,0.7) , 15,0,0,0 );" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="12.0">
+                           <children>
+                              <Label layoutX="17.0" layoutY="24.0" style="-fx-text-fill: #A6B1E1;" text="01.01.1900" textFill="WHITE">
+                                 <font>
+                                    <Font name="Segoe UI Bold" size="15.0" />
+                                 </font>
+                              </Label>
+                              <Label layoutX="33.0" layoutY="45.0" text="12:00">
+                                 <font>
+                                    <Font name="Segoe UI Bold" size="15.0" />
+                                 </font>
+                              </Label>
+                              <ImageView fitHeight="44.0" fitWidth="41.0" layoutX="146.0" layoutY="23.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@flight_takeoff_FILL0_wght400_GRAD0_opsz48.png" />
+                                 </image>
+                              </ImageView>
+                              <ImageView fitHeight="44.0" fitWidth="41.0" layoutX="353.0" layoutY="24.0" pickOnBounds="true" preserveRatio="true" AnchorPane.rightAnchor="375.0">
+                                 <image>
+                                    <Image url="@flight_land_FILL0_wght400_GRAD0_opsz48.png" />
+                                 </image>
+                              </ImageView>
+                              <Label layoutX="204.0" layoutY="35.0" text="Warszawa-Okęcie">
+                                 <font>
+                                    <Font name="System Bold" size="14.0" />
+                                 </font>
+                              </Label>
+                              <Label layoutX="409.0" layoutY="35.0" prefWidth="150.0" text="Warszawa-Modlin" AnchorPane.rightAnchor="210.0">
+                                 <font>
+                                    <Font name="System Bold" size="14.0" />
+                                 </font>
+                              </Label>
+                              <Separator layoutX="108.0" orientation="VERTICAL" prefHeight="87.0" prefWidth="2.0" style="-fx-border-style: solid; -fx-border-width: 0;" />
+                              <Separator layoutX="566.0" orientation="VERTICAL" prefHeight="87.0" prefWidth="2.0" style="-fx-border-style: solid; -fx-border-width: 0;" AnchorPane.rightAnchor="197.0" />
+                              <Label layoutX="582.0" layoutY="25.0" prefWidth="90.0" text="Dostępne!" AnchorPane.rightAnchor="98.0">
+                                 <font>
+                                    <Font name="System Bold" size="12.0" />
+                                 </font>
+                              </Label>
+                              <Circle fill="#6f872f" layoutX="588.0" layoutY="52.0" radius="6.0" stroke="BLACK" strokeType="INSIDE" AnchorPane.rightAnchor="175.0" />
+                              <Label layoutX="605.0" layoutY="44.0" prefWidth="70.0" text="duża ilość" AnchorPane.rightAnchor="100.0">
+                                 <font>
+                                    <Font name="System Italic" size="12.0" />
+                                 </font>
+                              </Label>
+                              <Separator layoutX="675.0" orientation="VERTICAL" prefHeight="87.0" prefWidth="2.0" style="-fx-border-style: solid; -fx-border-width: 0;" AnchorPane.rightAnchor="88.0" />
+                              <Label alignment="CENTER" layoutX="696.0" layoutY="24.0" prefWidth="40.0" text="999" AnchorPane.rightAnchor="34.0">
+                                 <font>
+                                    <Font name="System Bold" size="18.0" />
+                                 </font>
+                              </Label>
+                              <Label layoutX="733.0" layoutY="24.0" text="zł" AnchorPane.rightAnchor="20.0">
+                                 <font>
+                                    <Font size="18.0" />
+                                 </font>
+                              </Label>
+                              <Label layoutX="708.0" layoutY="48.0" text="1 os." AnchorPane.rightAnchor="37.0">
+                                 <font>
+                                    <Font name="System Italic" size="12.0" />
+                                 </font>
+                              </Label>
+                              <Button layoutX="14.0" mnemonicParsing="false" onAction="#onTicketClick" opacity="0.0" prefHeight="84.0" prefWidth="735.0" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="20.0">
+                                 <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                 </cursor>
+                              </Button>
+                           </children>
+                        </AnchorPane>
+                     </children>
+                  </AnchorPane>
+              </content>
+            </ScrollPane>
+            <Pane fx:id="ticketPane" layoutX="125.0" layoutY="100.0" prefHeight="416.0" prefWidth="564.0" style="-fx-background-color: #EEEEEE; -fx-effect: dropshadow( gaussian , rgba(0,0,0,0.7) , 20,0,0,0 ); -fx-border-radius: 10; -fx-background-radius: 10;" visible="false">
+               <children>
+                  <Label layoutX="69.0" layoutY="17.0" text="Szczegóły biletu nr #">
+                     <font>
+                        <Font name="System Bold" size="20.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="ticketIdInfoLabel" layoutX="264.0" layoutY="17.0" style="-fx-text-fill: #A6B1E1;" text="001">
+                     <font>
+                        <Font name="System Bold" size="20.0" />
+                     </font>
+                  </Label>
+                  <ImageView fitHeight="44.0" fitWidth="42.0" layoutX="16.0" layoutY="11.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@airplane_ticket_FILL0_wght400_GRAD0_opsz48.png" />
+                     </image>
+                  </ImageView>
+                  <Label layoutX="26.0" layoutY="126.0" text="Z:">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="departureInfoLabel" layoutX="107.0" layoutY="125.0" style="-fx-text-fill: #8785A2;" text="Warszawa-Modlin">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="26.0" layoutY="146.0" text="Do:">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="ticketTypeInfoLabel" layoutX="24.0" layoutY="76.0" text="Miejsce siedzące w 1 klasie">
+                     <font>
+                        <Font name="System Bold" size="14.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="arrivalInfoLabel" layoutX="107.0" layoutY="147.0" style="-fx-text-fill: #8785A2;" text="Warszawa-Okęcie">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="26.0" layoutY="106.0" text="Nr lotu:">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="flightIdInfoLabel" layoutX="107.0" layoutY="105.0" style="-fx-text-fill: #8785A2;" text="AA0000">
+                     <font>
+                        <Font name="System Bold Italic" size="14.0" />
+                     </font>
+                  </Label>
+                  <ImageView fitHeight="26.0" fitWidth="27.0" layoutX="122.0" layoutY="195.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@calendar_month_FILL0_wght400_GRAD0_opsz48.png" />
+                     </image>
+                  </ImageView>
+                  <Label layoutX="27.0" layoutY="198.0" text="Data wylotu">
+                     <font>
+                        <Font name="System Bold" size="14.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="dateInfoLabel" layoutX="107.0" layoutY="233.0" style="-fx-text-fill: #8785A2;" text="01.01.1900">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="30.0" layoutY="233.0" text="Dzień">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="30.0" layoutY="253.0" text="Godzina">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="timeInfoLabel" layoutX="107.0" layoutY="253.0" style="-fx-text-fill: #8785A2;" text="12:00">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="32.0" layoutY="286.0" text="Szacowana długość lotu:">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="hourInfoLabel" layoutX="65.0" layoutY="304.0" style="-fx-text-fill: #8785A2;" text="01">
+                     <font>
+                        <Font name="System Italic" size="14.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="83.0" layoutY="304.0" style="-fx-text-fill: #8785A2;" text="h">
+                     <font>
+                        <Font name="System Italic" size="14.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="minuteInfoLabel" layoutX="99.0" layoutY="304.0" style="-fx-text-fill: #8785A2;" text="00">
+                     <font>
+                        <Font name="System Italic" size="14.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="117.0" layoutY="304.0" style="-fx-text-fill: #8785A2;" text="min">
+                     <font>
+                        <Font name="System Italic" size="14.0" />
+                     </font>
+                  </Label>
+                  <CheckBox fx:id="agreementCheckBox" layoutX="22.0" layoutY="375.0" mnemonicParsing="false" onAction="#onAgreementCheck" text="Zapoznałem się z " />
+                  <Label fx:id="amountInfoLabel" alignment="CENTER" layoutX="375.0" layoutY="370.0" prefHeight="28.0" prefWidth="35.0" style="-fx-border-color: black; -fx-border-radius: 3; -fx-background-radius: 3;" text="1">
+                     <padding>
+                        <Insets left="5.0" right="5.0" />
+                     </padding>
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font>
+                  </Label>
+                  <Button layoutX="347.0" layoutY="370.0" mnemonicParsing="false" onAction="#onDecreaseAmountClick" prefHeight="28.0" prefWidth="28.0" style="-fx-padding: -2 0 0 0;" text="-">
+                     <font>
+                        <Font name="System Bold" size="19.0" />
+                     </font>
+                  </Button>
+                  <Button layoutX="410.0" layoutY="370.0" mnemonicParsing="false" onAction="#onIncreaseAmountClick" prefHeight="28.0" prefWidth="28.0" style="-fx-padding: -2 0 0 0;" text="+">
+                     <font>
+                        <Font name="System Bold" size="19.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="buyTicketsButton" disable="true" layoutX="448.0" layoutY="369.0" mnemonicParsing="false" style="-fx-background-color: #A6B1E1;" text="Kup bilet(y)">
+                     <font>
+                        <Font name="System Bold" size="14.0" />
+                     </font>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </Button>
+                  <Button alignment="CENTER" contentDisplay="CENTER" layoutX="513.0" layoutY="18.0" mnemonicParsing="false" onAction="#onTicketCloseClick" prefHeight="28.0" prefWidth="28.0" style="-fx-padding: -2 0 0 0; -fx-background-color: #A6B1E1; -fx-effect: dropshadow( gaussian , rgba(0,0,0,0.7) , 4,0,0,0 );" text="x" textAlignment="CENTER">
+                     <font>
+                        <Font name="System Bold" size="20.0" />
+                     </font>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </Button>
+                  <Label layoutX="348.0" layoutY="345.0" text="Pozostało:" />
+                  <Label fx:id="quantityInfoLabel" alignment="CENTER_RIGHT" contentDisplay="RIGHT" layoutX="406.0" layoutY="345.0" prefWidth="13.0" text="99" textAlignment="RIGHT" />
+                  <Label layoutX="424.0" layoutY="345.0" text="sztuk." />
+                  <Label layoutX="347.0" layoutY="76.0" text="Dodatkowe informacje:">
+                     <font>
+                        <Font name="System Bold" size="14.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="347.0" layoutY="105.0" text="Przesiadki: ">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="transferInfoLabel" layoutX="424.0" layoutY="105.0" text="Tak">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="347.0" layoutY="128.0" text="Samolot:">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="planeInfoLabel" layoutX="424.0" layoutY="128.0" text="Airbus XX">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="priceInfoLabel" layoutX="347.0" layoutY="312.0" style="-fx-text-fill: #A6B1E1;" text="999">
+                     <font>
+                        <Font name="System Bold" size="24.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="currencyInfoLabel" layoutX="397.0" layoutY="312.0" text="zł">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                  </Label>
+                  <Hyperlink layoutX="134.0" layoutY="372.0" text="regulaminem PremiumFlights™" underline="true" />
+               </children>
+            </Pane>
+            <Pane fx:id="accountPane" layoutX="200.0" layoutY="100.0" prefHeight="416.0" prefWidth="397.0" style="-fx-background-color: #EEEEEE; -fx-effect: dropshadow( gaussian , rgba(0,0,0,0.7) , 20,0,0,0 ); -fx-border-radius: 10; -fx-background-radius: 10;" visible="false">
+               <children>
+                  <Label fx:id="accountTitleLabel" alignment="CENTER" layoutX="61.0" layoutY="22.0" prefHeight="30.0" prefWidth="252.0" style="-fx-effect: dropshadow(three-pass-box, grey, 25, 0, 0, 0);" text="Panel zarządzania kontem">
+                     <font>
+                        <Font name="System Bold" size="20.0" />
+                     </font>
+                  </Label>
+                  <ImageView fitHeight="34.0" fitWidth="33.0" layoutX="317.0" layoutY="20.0" pickOnBounds="true" preserveRatio="true" style="-fx-effect: dropshadow(three-pass-box, grey, 7, 0, 0, 0);">
+                     <image>
+                        <Image url="@admin_panel_settings_FILL0_wght400_GRAD0_opsz48.png" />
+                     </image>
+                  </ImageView>
+                  <Separator layoutY="64.0" prefHeight="4.0" prefWidth="410.0">
+                     <effect>
+                        <ColorAdjust brightness="-0.33" />
+                     </effect>
+                  </Separator>
+                  <Separator layoutY="68.0" prefHeight="4.0" prefWidth="410.0">
+                     <effect>
+                        <ColorAdjust brightness="-0.33" />
+                     </effect>
+                  </Separator>
+                  <Button fx:id="closeAccountButton" layoutX="133.0" layoutY="361.0" mnemonicParsing="false" onAction="#onCloseAccountClick" prefHeight="23.0" prefWidth="131.0" style="-fx-effect: dropshadow( gaussian , rgba(0,0,0,0.7) , 10,0,0,1 ); -fx-background-color: #6f6d6d; -fx-padding: 2;" text="Zamknij" textFill="#dadada">
+                     <font>
+                        <Font name="System Bold" size="13.0" />
+                     </font>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </Button>
+                  <Label fx:id="personalDataLabel" alignment="CENTER" layoutX="116.0" layoutY="110.0" prefHeight="25.0" prefWidth="169.0" text="Twoje dane osobowe:">
+                     <font>
+                        <Font name="System Bold" size="16.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="accNameLabel" layoutX="123.0" layoutY="141.0" prefHeight="25.0" prefWidth="47.0" text="Imię:">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="name2Label" layoutX="213.0" layoutY="141.0" text="_imie">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="accSurnameLabel" layoutX="123.0" layoutY="172.0" prefHeight="25.0" prefWidth="77.0" text="Nazwisko:">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="surname2Label" layoutX="213.0" layoutY="172.0" text="_nazwisko">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="accLoginLabel" layoutX="123.0" layoutY="203.0" prefHeight="25.0" prefWidth="47.0" text="Login:">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="loginLabel" layoutX="213.0" layoutY="203.0" text="_login">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="accPasswordLabel" layoutX="123.0" layoutY="236.0" prefHeight="25.0" prefWidth="77.0" text="Hasło:">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="passwordLabel" layoutX="213.0" layoutY="236.0" text="_haslo">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="uncoveredPasswordLabel" layoutX="213.0" layoutY="236.0" text="_haslo_odkryte" visible="false">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </Label>
+                  <ImageView fx:id="coveredImageView" fitHeight="17.0" fitWidth="19.0" layoutX="331.0" layoutY="240.0" pickOnBounds="true" preserveRatio="true" visible="false">
+                     <image>
+                        <Image url="@visibility_off_FILL0_wght400_GRAD0_opsz48.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fx:id="uncoveredImageView" fitHeight="26.0" fitWidth="17.0" layoutX="292.0" layoutY="240.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@visibility_FILL0_wght400_GRAD0_opsz48.png" />
+                     </image>
+                  </ImageView>
+                  <Button fx:id="uncoveredButton" layoutX="287.0" layoutY="236.0" mnemonicParsing="false" onAction="#onUncoveredClick" opacity="0.0" prefHeight="20.0" prefWidth="27.0" />
+                  <Button fx:id="coveredButton" layoutX="326.0" layoutY="236.0" mnemonicParsing="false" onAction="#onCoveredClick" opacity="0.0" prefHeight="23.0" prefWidth="27.0" visible="false" />
+                  <Button fx:id="passwordChangeButton" layoutX="159.0" layoutY="317.0" mnemonicParsing="false" onAction="#onPasswordChangeClick" prefHeight="25.0" prefWidth="83.0" text="Zmień hasło" />
+                  <Button fx:id="accountDeleteButton" layoutX="253.0" layoutY="317.0" mnemonicParsing="false" onAction="#onAccountDeleteClick" prefHeight="25.0" prefWidth="83.0" text="Usuń konto" />
+                  <Pane fx:id="newPasswordPane" layoutX="103.0" layoutY="116.0" prefHeight="163.0" prefWidth="200.0" style="-fx-background-color: #dbdbd9; -fx-effect: dropshadow( gaussian , rgba(0,0,0,0.7) , 20,0,0,0 ); -fx-background-radius: 10; -fx-border-radius: 10;" visible="false">
+                     <children>
+                        <Label layoutX="51.0" layoutY="33.0" text="Wpisz nowe hasło:" />
+                        <TextField fx:id="newPasswordTextField" layoutX="25.0" layoutY="59.0" />
+                        <Button layoutX="26.0" layoutY="105.0" mnemonicParsing="false" onAction="#onSavePasswordClick" text="Zatwierdź" />
+                        <Button layoutX="107.0" layoutY="105.0" mnemonicParsing="false" onAction="#onCancelPasswordClick" prefHeight="25.0" prefWidth="68.0" text="Anuluj" />
+                     </children>
+                  </Pane>
+                  <Pane fx:id="accountDeletePane" layoutX="97.0" layoutY="116.0" prefHeight="163.0" prefWidth="233.0" style="-fx-background-color: #dbdbd9; -fx-effect: dropshadow( gaussian , rgba(0,0,0,0.7) , 20,0,0,0 ); -fx-background-radius: 10; -fx-border-radius: 10;" visible="false">
+                     <children>
+                        <Label layoutX="25.0" layoutY="27.0" text="Potwierdź usunięcie konta hasłem:" />
+                        <TextField fx:id="deleteAccountTextField" layoutX="42.0" layoutY="57.0" />
+                        <Button layoutX="43.0" layoutY="103.0" mnemonicParsing="false" onAction="#onConfirmAccountDeleteClick" text="Zatwierdź" />
+                        <Button layoutX="124.0" layoutY="103.0" mnemonicParsing="false" onAction="#onCancelAccountDeleteClick" prefHeight="25.0" prefWidth="68.0" text="Anuluj" />
+                     </children>
+                  </Pane>
+                  <Button layoutX="65.0" layoutY="317.0" mnemonicParsing="false" onAction="#onAvatarChooseClick" text="Wgraj avatar" />
+               </children>
+            </Pane>
+            <Pane fx:id="settingsPane" layoutX="200.0" layoutY="100.0" prefHeight="416.0" prefWidth="410.0" style="-fx-background-color: #EEEEEE; -fx-effect: dropshadow( gaussian , rgba(0,0,0,0.7) , 20,0,0,0 ); -fx-border-radius: 10; -fx-background-radius: 10;" visible="false">
+               <children>
+                  <Label fx:id="settingsTitleLabel" alignment="CENTER" layoutX="82.0" layoutY="21.0" prefHeight="30.0" prefWidth="214.0" style="-fx-effect: dropshadow(three-pass-box, grey, 25, 0, 0, 0);" text="Ustawienia aplikacji" textAlignment="CENTER">
+                     <font>
+                        <Font name="System Bold" size="20.0" />
+                     </font>
+                  </Label>
+                  <ImageView fitHeight="34.0" fitWidth="33.0" layoutX="296.0" layoutY="20.0" pickOnBounds="true" preserveRatio="true" style="-fx-effect: dropshadow(three-pass-box, grey, 7, 0, 0, 0);">
+                     <image>
+                        <Image url="@settings_FILL0_wght400_GRAD0_opsz48.png" />
+                     </image>
+                  </ImageView>
+                  <Separator layoutY="64.0" prefHeight="4.0" prefWidth="410.0">
+                     <effect>
+                        <ColorAdjust brightness="-0.33" />
+                     </effect>
+                  </Separator>
+                  <Separator layoutY="68.0" prefHeight="4.0" prefWidth="410.0">
+                     <effect>
+                        <ColorAdjust brightness="-0.33" />
+                     </effect>
+                  </Separator>
+                  <Button fx:id="closeSettingsButton" layoutX="174.0" layoutY="379.0" mnemonicParsing="false" onAction="#onCloseSettingsClick" prefHeight="23.0" prefWidth="63.0" style="-fx-effect: dropshadow( gaussian , rgba(0,0,0,0.7) , 10,0,0,1 ); -fx-background-color: #6f6d6d; -fx-padding: 2;" text="Zamknij" textFill="#dadada">
+                     <font>
+                        <Font name="System Bold" size="13.0" />
+                     </font>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </Button>
+                  <Label fx:id="languageLabel" alignment="CENTER" layoutX="90.0" layoutY="113.0" text="Język aplikacji">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Label>
+                  <ComboBox fx:id="languageComboBox" layoutX="203.0" layoutY="110.0" onAction="#onLanguageClick" prefHeight="25.0" prefWidth="138.0" />
+                  <Label fx:id="fullscreenLabel" layoutX="71.0" layoutY="162.0" text="Tryb pełnoekranowy">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Label>
+                  <CheckBox fx:id="fullscreenCheckbox" layoutX="265.0" layoutY="163.0" mnemonicParsing="false" onAction="#onFullscreenClick" />
+                  <Label layoutX="69.0" layoutY="208.0" text="Pokazuj niedostępne">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Label>
+                  <CheckBox fx:id="showNotAvailableCheckBox" layoutX="265.0" layoutY="210.0" mnemonicParsing="false" onAction="#onShowNotAvailableClick" />
+               </children>
+            </Pane>
+            <Pane fx:id="creditsPane" layoutX="250.0" layoutY="200.0" prefHeight="197.0" prefWidth="300.0" style="-fx-background-color: #EEEEEE; -fx-effect: dropshadow( gaussian , rgba(0,0,0,0.7) , 20,0,0,0 ); -fx-border-radius: 10; -fx-background-radius: 10;" visible="false">
+               <children>
+                  <Label fx:id="creditsTitleLabel" alignment="CENTER" layoutX="66.0" layoutY="24.0" prefHeight="30.0" prefWidth="169.0" style="-fx-effect: dropshadow(three-pass-box, grey, 25, 0, 0, 0);" text="Autorzy aplikacji">
+                     <font>
+                        <Font name="System Bold" size="20.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="44.0" layoutY="76.0" text="backend (Java):" />
+                  <Label layoutX="44.0" layoutY="104.0" text="frontend (JavaFX):" />
+                  <Label layoutX="162.0" layoutY="76.0" text="Piotr Haraburda">
+                     <font>
+                        <Font name="System Bold Italic" size="12.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="162.0" layoutY="104.0" text="Piotr Haraburda">
+                     <font>
+                        <Font name="System Bold Italic" size="12.0" />
+                     </font>
+                  </Label>
+                  <Button fx:id="closeCreditsButton" layoutX="119.0" layoutY="145.0" mnemonicParsing="false" onAction="#onCloseCreditsClick" prefHeight="23.0" prefWidth="63.0" style="-fx-effect: dropshadow( gaussian , rgba(0,0,0,0.7) , 10,0,0,1 ); -fx-background-color: #6f6d6d; -fx-padding: 2;" text="Zamknij" textFill="#dadada">
+                     <font>
+                        <Font name="System Bold" size="13.0" />
+                     </font>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </Button>
+               </children>
+            </Pane>
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="sideTabAnchorPane" layoutX="813.0" maxHeight="1080.0" maxWidth="400.0" prefHeight="600.0" prefWidth="198.0" style="-fx-background-color: #EEEEEE; -fx-effect: dropshadow(three-pass-box, grey, 30, 0, 0, 0);">
+         <children>
+            <Label fx:id="accountLabel" alignment="CENTER" layoutX="21.0" layoutY="116.0" prefHeight="20.0" prefWidth="94.0" style="-fx-text-fill: #A6B1E1;" text="Konto" AnchorPane.leftAnchor="21.0" AnchorPane.rightAnchor="76.0">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Label>
+            <Label fx:id="settingsLabel" alignment="CENTER" layoutX="21.0" layoutY="170.0" prefHeight="20.0" prefWidth="94.0" style="-fx-text-fill: #A6B1E1;" text="Ustawienia" AnchorPane.leftAnchor="21.0" AnchorPane.rightAnchor="76.0">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Label>
+            <Label fx:id="creditsLabel" alignment="CENTER" layoutX="21.0" layoutY="225.0" prefHeight="20.0" prefWidth="94.0" style="-fx-text-fill: #A6B1E1;" text="Autorzy" AnchorPane.leftAnchor="21.0" AnchorPane.rightAnchor="76.0">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Label>
+            <Label fx:id="logoutLabel" alignment="CENTER" layoutX="21.0" layoutY="280.0" prefHeight="20.0" prefWidth="94.0" style="-fx-text-fill: #A6B1E1;" text="Wyloguj się" AnchorPane.leftAnchor="21.0" AnchorPane.rightAnchor="76.0">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Label>
+            <ImageView fx:id="avatarImageView" fitHeight="51.0" fitWidth="47.0" layoutX="18.0" layoutY="20.0" pickOnBounds="true" preserveRatio="true" style="-fx-effect: dropshadow(one-pass-box, grey, 0, 0, 2, 0);" x="-3.0" y="3.0">
+               <image>
+                  <Image url="@account_circle_FILL0_wght400_GRAD0_opsz48.png" />
+               </image>
+            </ImageView>
+            <Label fx:id="surnameLabel" layoutX="74.0" layoutY="24.0" prefHeight="26.0" style="-fx-text-fill: #26282B;" text="Nazwisko">
+               <font>
+                  <Font name="System Bold" size="17.0" />
+               </font>
+            </Label>
+            <Label fx:id="nameLabel" layoutX="74.0" layoutY="44.0" prefHeight="26.0" prefWidth="112.0" style="-fx-text-fill: #8785A2;" text="Imię">
+               <font>
+                  <Font name="System Bold" size="17.0" />
+               </font>
+            </Label>
+            <ImageView fx:id="accountImageView" fitHeight="38.0" fitWidth="27.0" layoutX="140.0" layoutY="112.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@admin_panel_settings_FILL0_wght400_GRAD0_opsz48.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="planeImageView" fitHeight="148.0" fitWidth="175.0" layoutX="21.0" layoutY="344.0" nodeOrientation="INHERIT" pickOnBounds="true" preserveRatio="true" style="-fx-effect: dropshadow(three-pass-box, grey, 7, 0, 0, 0);">
+               <image>
+                  <Image url="@pngegg.png" />
+               </image>
+               <viewport>
+                  <Rectangle2D minX="175.0" minY="148.0" />
+               </viewport>
+            </ImageView>
+            <Label fx:id="premiumFlightsLabel" alignment="CENTER" layoutX="31.0" layoutY="480.0" prefHeight="25.0" prefWidth="138.0" style="-fx-effect: dropshadow(three-pass-box, grey, 25, 0, 10, 0);" text="PremiumFlights™" AnchorPane.leftAnchor="31.0" AnchorPane.rightAnchor="19.0">
+               <font>
+                  <Font name="System Bold" size="16.0" />
+               </font>
+            </Label>
+            <Label fx:id="luxuryLabel" alignment="CENTER" layoutX="36.0" layoutY="503.0" prefHeight="17.0" prefWidth="112.0" style="-fx-text-fill: #8785A2;" text="Luksus i prestiż" AnchorPane.leftAnchor="36.0" AnchorPane.rightAnchor="24.0">
+               <font>
+                  <Font name="System Bold Italic" size="12.0" />
+               </font>
+            </Label>
+            <ImageView fx:id="settingsImageView" fitHeight="69.0" fitWidth="27.0" layoutX="140.0" layoutY="166.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@settings_FILL0_wght400_GRAD0_opsz48.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="creditsImageView" fitHeight="41.0" fitWidth="27.0" layoutX="140.0" layoutY="221.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@group_FILL0_wght400_GRAD0_opsz48.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="logoutImageView" fitHeight="33.0" fitWidth="27.0" layoutX="140.0" layoutY="276.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@logout_FILL0_wght400_GRAD0_opsz48.png" />
+               </image>
+            </ImageView>
+            <Button fx:id="logoutButton" layoutX="6.0" layoutY="264.0" mnemonicParsing="false" onAction="#onLogoutClick" opacity="0.24" prefHeight="51.0" prefWidth="185.0" style="-fx-background-color: transparent;" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="1.0">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
+            <Button fx:id="creditsButton" layoutX="6.0" layoutY="209.0" mnemonicParsing="false" onAction="#onCreditsClick" opacity="0.24" prefHeight="51.0" prefWidth="185.0" style="-fx-background-color: transparent;" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="1.0">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
+            <Button fx:id="accountButton" layoutX="5.0" layoutY="99.0" mnemonicParsing="false" onAction="#onAccountClick" opacity="0.24" prefHeight="51.0" prefWidth="185.0" style="-fx-background-color: transparent;" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="1.0">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
+            <Button fx:id="settingsButton" layoutX="5.0" layoutY="154.0" mnemonicParsing="false" onAction="#onSettingsClick" opacity="0.24" prefHeight="51.0" prefWidth="185.0" style="-fx-background-color: transparent;" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="1.0">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
+            <Separator fx:id="sideSeparator1" layoutX="1.0" layoutY="91.0" prefHeight="4.0" prefWidth="190.0" AnchorPane.leftAnchor="1.0" AnchorPane.rightAnchor="0.0">
+               <effect>
+                  <ColorAdjust brightness="-0.75" />
+               </effect>
+            </Separator>
+            <Separator fx:id="sideSeparator2" layoutX="1.0" layoutY="95.0" prefHeight="4.0" prefWidth="190.0" AnchorPane.leftAnchor="1.0" AnchorPane.rightAnchor="0.0">
+               <effect>
+                  <ColorAdjust brightness="-0.75" />
+               </effect>
+            </Separator>
+            <Separator fx:id="sideSeparator3" layoutX="1.0" layoutY="150.0" prefHeight="4.0" prefWidth="190.0" AnchorPane.leftAnchor="1.0" AnchorPane.rightAnchor="0.0">
+               <effect>
+                  <ColorAdjust brightness="-0.75" />
+               </effect>
+            </Separator>
+            <Separator fx:id="sideSeparator4" layoutX="1.0" layoutY="205.0" prefHeight="4.0" prefWidth="190.0" AnchorPane.leftAnchor="1.0" AnchorPane.rightAnchor="0.0">
+               <effect>
+                  <ColorAdjust brightness="-0.75" />
+               </effect>
+            </Separator>
+            <Separator fx:id="sideSeparator5" layoutX="1.0" layoutY="260.0" prefHeight="4.0" prefWidth="190.0" AnchorPane.leftAnchor="1.0" AnchorPane.rightAnchor="0.0">
+               <effect>
+                  <ColorAdjust brightness="-0.75" />
+               </effect>
+            </Separator>
+            <Separator fx:id="sideSeparator6" layoutX="1.0" layoutY="315.0" prefHeight="4.0" prefWidth="190.0" AnchorPane.leftAnchor="1.0" AnchorPane.rightAnchor="0.0">
+               <effect>
+                  <ColorAdjust brightness="-0.75" />
+               </effect>
+            </Separator>
+            <Button fx:id="refreshButton" alignment="CENTER" contentDisplay="CENTER" layoutX="31.0" layoutY="542.0" mnemonicParsing="false" onAction="#onRefreshClick" prefHeight="25.0" prefWidth="138.0" style="-fx-background-color: #8785A2;" text="Odśwież listę biletów" textAlignment="CENTER" textFill="WHITE" AnchorPane.leftAnchor="31.0" AnchorPane.rightAnchor="19.0">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
+            <Separator orientation="VERTICAL" prefHeight="600.0" prefWidth="6.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
+               <effect>
+                  <ColorAdjust brightness="-0.75" />
+               </effect>
+            </Separator>
+         </children>
+         <effect>
+            <ColorAdjust />
+         </effect>
+      </AnchorPane>
+   </items>
+</SplitPane>

@@ -1,0 +1,7 @@
+001#19.04.2023#13:00#Katowice-Pyrzowice#Olsztyn-Szymany#499#27#Boeing 707#01#00#przesiadkowy#1klasa#FA4982
+002#20.04.2023#21:30#Warszawa-Modlin#Poznań-Ławica#520#6#Airbus A320#00#45#bezprzesiadkowy#zwykły#TR8176
+003#17.04.2023#16:00#Kraków-Balice#Poznań-Ławica#120#1#McDonnell DC-9#01#10#bezprzesiadkowy#1klasa#IJ9812
+004#29.04.2023#14:30#Wrocław-Strachowice#Rzeszów-Jasionka#679#59#Airbus A320#01#02#przesiadkowy#1klasa#FA4981
+005#04.04.2023#13:00#Warszawa-Okęcie#Olsztyn-Szymany#636#0#Boeing 727#00#30#bezprzesiadkowy#1klasa#FA4986
+006#20.04.2023#21:00#Warszawa-Modlin#Warszawa-Okęcie#520#32#Airbus A320#00#30#przesiadkowy#zwykły#DF9821
+007#10.04.2023#19:30#Warszawa-Modlin#Poznań-Ławica#980#12#Boeing 727#00#49#bezprzesiadkowy#zwykły#TR8176
