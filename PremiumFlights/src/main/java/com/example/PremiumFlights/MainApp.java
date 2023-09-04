@@ -434,8 +434,57 @@ public class MainApp implements Initializable {
             try {
                 CRUDtickets crud=CRUDService.getTicketCRUD(document.getId());
                 ticketIds[j]=crud.getId();
-                dates[j]= crud.getDate().get(0) +"."+crud.getDate().get(1) +"."+crud.getDate().get(2);
-                times[j]=crud.getTime().get(0)+":"+crud.getTime().get(1);
+                int day=crud.getDate().get(0);
+                int month=crud.getDate().get(1);
+                if(day>=10)
+                {
+                    if(month>=10)
+                    {
+                        dates[j]= day +"."+month +"."+crud.getDate().get(2);
+                    }
+                    else
+                    {
+                        dates[j]= day +"."+"0"+month +"."+crud.getDate().get(2);
+                    }
+                }
+                else
+                {
+                    if(month>=10)
+                    {
+                        dates[j]= "0"+day +"."+month +"."+crud.getDate().get(2);
+                    }
+                    else
+                    {
+                        dates[j]= "0"+day +"."+"0"+month +"."+crud.getDate().get(2);
+                    }
+                }
+
+                int hour=crud.getTime().get(0);
+                int minute=crud.getTime().get(1);
+
+                if(hour>=10)
+                {
+                    if(minute>=10)
+                    {
+                        times[j]=hour+":"+minute;
+                    }
+                    else
+                    {
+                        times[j]=hour+":"+"0"+minute;
+                    }
+                }
+                else
+                {
+                    if(minute>=10)
+                    {
+                        times[j]="0"+hour+":"+minute;
+                    }
+                    else
+                    {
+                        times[j]="0"+hour+":"+"0"+minute;
+                    }
+                }
+
                 departures[j]=crud.getDeparture();
                 arrivals[j]=crud.getArrival();
                 prices[j]=Integer.toString(crud.getPrice());
